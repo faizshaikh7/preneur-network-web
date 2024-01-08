@@ -1,4 +1,4 @@
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider , signInWithPopup} from 'firebase/auth'
 import {auth} from '../firebaseConfig'
 
 export const LoginAPI = (email, password) => {
@@ -20,3 +20,15 @@ export const SignUpAPI = (email, password) => {
         return err
     }
 }
+
+export const GoogleSignInAPI = () => {
+    try {
+        let googleProvider = new GoogleAuthProvider()
+        let res = signInWithPopup(auth, googleProvider);
+        return res
+    } catch (err) {
+        console.log(err);
+        return err
+    }
+}
+

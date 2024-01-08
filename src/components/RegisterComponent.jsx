@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
+import { SignUpAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import PreneurLogo from "../assets/preneur-network-logo.png";
 import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-function LoginComponent() {
+function RegisterComponent() {
   let navigate = useNavigate();
 
   const [cred, setCreds] = useState({});
 
   const loginBtn = async () => {
     try {
-      let res = await LoginAPI(cred.email, cred.password);
-      toast.success("Successfully Logged In");
+      let res = await SignUpAPI(cred.email, cred.password);
+      toast.success("Successfully Signed Up");
       console.log(res?.user);
     } catch (err) {
       console.log(err);
@@ -31,8 +31,8 @@ function LoginComponent() {
       <img src={PreneurLogo} alt="logo" className="preneurLogo" />
 
       <div className="login-wrapper-inner">
-        <h1 className="heading">Login</h1>
-        <p className="sub-heading">Stay Updated on your professional world</p>
+        <h1 className="heading">SignUp</h1>
+        <p className="sub-heading">Make the most of your professional life</p>
 
         <div className="auth-inputs">
           <input
@@ -57,7 +57,7 @@ function LoginComponent() {
           className="bg-blue-800 text-white rounded-full h-11 mt-4 w-72 mb-4"
           onClick={loginBtn}
         >
-          Login
+          SignUp
         </button>
       </div>
       <hr className="hr-text" data-content="or" />
@@ -66,7 +66,7 @@ function LoginComponent() {
           onClick={googleAuthBtn}
           className="bg-blue-700 text-white rounded-full h-11 mt-4 w-72"
         >
-          Sign in with Google
+          SignUp with Google
         </button>
         {/* <button
           onClick={""}
@@ -75,9 +75,9 @@ function LoginComponent() {
           Sign in with Apple
         </button> */}
         <p className="go-to-signup">
-          New to Preneur Network?{" "}
-          <span className="join-now" onClick={() => navigate("/signup")}>
-            Join Now
+          Already have an account?{" "}
+          <span className="join-now" onClick={() => navigate("/login")}>
+            Login
           </span>
         </p>
       </div>
@@ -85,4 +85,4 @@ function LoginComponent() {
   );
 }
 
-export default LoginComponent;
+export default RegisterComponent;

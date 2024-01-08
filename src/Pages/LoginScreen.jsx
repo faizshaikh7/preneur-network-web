@@ -1,4 +1,4 @@
-import LoginComponent from "../Components/LoginComponent"
+import LoginComponent from "../components/LoginComponent"
 
 function LoginScreen() {
   return <LoginComponent/>;
